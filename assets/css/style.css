@@ -26,13 +26,43 @@ header p {
 main {
   min-height: 70vh;
   padding: 1%;
-  display: flex;
+  padding-top: 5%;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-around; */
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'first'
+    'second'
+    'third'
+    'post'
+    'assistance'
+    'reschedule';
+}
+
+main > section:nth-child(1) {
+  grid-area: first;
+}
+main > section:nth-child(2) {
+  grid-area: second;
+}
+main > section:nth-child(3) {
+  grid-area: third;
+}
+main > section:nth-child(4) {
+  grid-area: post;
+}
+main > section:nth-child(5) {
+  grid-area: assistance;
+}
+main > section:nth-child(6) {
+  grid-area: reschedule;
 }
 
 section {
-  width: 30%;
+  /* width: 30%; */
   border: 1px dashed white;
   border-radius: 8px;
   padding: 0 1% 1% 1%;
@@ -40,13 +70,15 @@ section {
 }
 
 section h3 {
+  width: 80%;
   text-align: center;
   background-color: #000814;
   border: 1px solid white;
   border-radius: 8px;
   position: relative;
-  bottom: 12px;
-  font-size: 2rem;
+  bottom: 20px;
+  font-size: 1.5rem;
+  justify-self: center;
 }
 
 section:hover,
@@ -87,14 +119,29 @@ footer {
   flex-direction: column;
 }
 
-@media screen and (max-width: 992px) {
-  section {
-    width: 45%;
+@media screen and (min-width: 35em) {
+  main {
+    padding-top: 3%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      'first second'
+      'third post'
+      'assistance reschedule';
   }
 }
 
-@media screen and (max-width: 576px) {
-  section {
-    width: 97%;
+@media screen and (min-width: 60em) {
+  main {
+    padding-top: 2%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      'first second third'
+      'post assistance reschedule';
+  }
+}
+
+@media screen and (min-width: 70em) {
+  section h3 {
+    font-size: 2rem;
   }
 }
